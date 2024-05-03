@@ -79,8 +79,21 @@ inquirer
         },
     ])
     .then((answers) => {
+
+        // Generate the table of contents with links
+const tableOfContents = `# Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contribution Guidelines](#contribution-guidelines)
+- [Test Instructions](#test-instructions)
+- [License](#license)
+- [Questions](#questions)
+`; // Structure user responses
         const data = `# ${answers.title}
-        
+
+${tableOfContents}
+
 ## Description
 ${answers.description}
 
@@ -103,7 +116,7 @@ ${answers.licenseBadge}
 ${answers.questions}
 ${answers.email}
 ${answers.contact}
-`; // Function to create README.md file
+`; // Function to generate README.md file
         const fileName = 'README.md';
 
         fs.writeFile(fileName, data, (err) => {
